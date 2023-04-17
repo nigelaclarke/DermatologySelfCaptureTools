@@ -12,6 +12,8 @@ The project aims to provide low-cost, high-quality medical imaging solutions to 
 
 The images captured by the user, as well as generic patient onboarding information, are transmitted to a cloud-based platform that would be accessible by the provider. It could be used in lieu of, or in conjunction with, the patient intake portion. Over time, it could use machine learning algorithms to analyze the images and provide a diagnosis. This project would enable the providers to prioritize urgent cases and route them to specialists for further evaluation. This project is designed to streamline the process of receiving medical care and reduce the need for in-person visits, which can be difficult or impossible for people living in remote areas.
 
+<img src="/images/MSCT-Tag.png" alt="Imaging tag" width="400">
+
 # What we're looking for
 
 We would like to see this project be developed and help patients. If you are interested in pursuing this as a company, please contact us and we would be happy to help.
