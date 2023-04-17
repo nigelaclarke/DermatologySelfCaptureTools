@@ -4,7 +4,7 @@ The project aims to address the challenges faced by dermatology health care prov
 
 # Project Background
 
-This repository was created for the culmination of the Health{hacks} 2023 hackathon project. It was initially developped by Nigel @nigelaclarke and Michael @mcleu; where we received second place in the Population and Preventative Health track. More historical information, background, and biodesign inspiration process will be added at a later date.
+This repository was created for the culmination of the Health{hacks} 2023 hackathon project. It was initially developped by Nigel [@nigelaclarke](https://github.com/nigelaclarke) and Michael [@mcleu](https://github.com/mcleu); where we received second place in the Population and Preventative Health track. More historical information, background, and biodesign inspiration process will be added at a later date.
 
 # How it works
 
