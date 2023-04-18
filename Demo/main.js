@@ -80,6 +80,7 @@ async function initCamera() {
 
         // Enable the start button when the camera has received its first frame
         video.addEventListener('playing', () => {
+            scanQRCode();
             startBtn.innerText = "Start";
             startBtn.disabled = false;
         });
@@ -89,13 +90,12 @@ async function initCamera() {
     }
 }
 // Show capture section, hide intro section and start the camera
-function startCapture() {
+function startView() {
     introSection.hidden = true;
     captureSection.hidden = false;
-    scanQRCode();
 }
 
-startBtn.addEventListener('click', startCapture);
+startBtn.addEventListener('click', startView);
 captureBtn.addEventListener('click', captureImage);
 
 initCamera(); // Start camera and QR code scanning
