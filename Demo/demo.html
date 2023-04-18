@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guided Self-capture Tool</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.2.0/dist/jsQR.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div id="intro-section">
+            <h1>Guided Self-capture Tool</h1>
+            <p>This tool accepts images when the QR Code fills 20-25% of the image width. If the
+                camera is too close or too far, instructions will be provided.</p>
+            <button id="start-btn" disabled>Waiting for camera</button>
+        </div>
+        <div id="capture-section" hidden>
+            <video id="webcam" autoplay></video>
+            <button id="capture-btn" disabled>Capture</button>
+            <canvas id="qr-canvas" hidden></canvas>
+            <p id="message"></p>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
