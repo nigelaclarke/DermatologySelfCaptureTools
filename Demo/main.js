@@ -9,7 +9,7 @@ const captureSection = document.getElementById('capture-section');
 const video = document.getElementById('webcam');
 const captureBtn = document.getElementById('capture-btn');
 const canvas = document.getElementById('qr-canvas');
-const ctx = canvas.getContext('2d');
+const ctx = canvas.getContext('2d', { willReadFrequently: true });
 const message = document.getElementById('message');
 
 // Calculate distance between two points
@@ -67,9 +67,7 @@ async function initCamera() {
     try {
         const stream = await navigator.mediaDevices.getUserMedia({
             video: {
-                facingMode: 'environment',
-                width: { ideal: 4096 },
-                height: { ideal: 2160 },
+                facingMode: 'environment'
             }, audio: false
         });
         video.srcObject = stream;
