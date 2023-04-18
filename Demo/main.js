@@ -1,6 +1,8 @@
 // Define Settings
-const minQRSize = 100;
-const maxQRSize = 150;
+const minQRRatio = 0.15
+const maxQRRatio = 0.20
+minQRSize = null;
+maxQRSize = null;
 
 // Get DOM elements
 const introSection = document.getElementById('intro-section');
@@ -81,6 +83,8 @@ async function initCamera() {
         video.addEventListener('loadedmetadata', () => {
             canvas.width = video.videoWidth;
             canvas.height = video.videoHeight;
+            minQRSize = video.videoWidth * minQRRatio;
+            maxQRSize = video.videoWidth * maxQRRatio;
         });
 
         // Enable the start button when the camera has received its first frame
