@@ -37,14 +37,13 @@ function scanQRCode() {
 
     if (qrCode) {
         const size = calculateDistance(qrCode.location.topLeftCorner, qrCode.location.topRightCorner);
-        // message.innerText = `QR Code detected. Size: ${size.toFixed(2)}px`;
 
         if (size < minQRSize) {
-            message.innerText += ' - Move Closer';
+            message.innerText = 'Move Closer';
             video.style.border = '10px solid yellow';
             captureBtn.disabled = true;
         } else if (size > maxQRSize) {
-            message.innerText += ' - Move Further Away';
+            message.innerText = 'Move Further Away';
             video.style.border = '10px solid yellow';
             captureBtn.disabled = true;
         } else {
@@ -63,7 +62,13 @@ function scanQRCode() {
 // Initialize camera
 async function initCamera() {
     try {
-        const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' }, audio: false });
+        const stream = await navigator.mediaDevices.getUserMedia({
+            video: {
+                facingMode: 'environment',
+                width: { ideal: 4096 },
+                height: { ideal: 2160 },
+            }, audio: false
+        });
         video.srcObject = stream;
         video.addEventListener('loadedmetadata', () => {
             canvas.width = video.videoWidth;
