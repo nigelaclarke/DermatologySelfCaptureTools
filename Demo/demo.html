@@ -10,29 +10,32 @@
 
 <body>
     <h1>QR Code Size Checker</h1>
-    <video id="webcam" playsinline autoplay style="border: 10px solid yellow;"></video><br>
-    <button id="capture-button" disabled>Capture</button>
-    <canvas id="qr-canvas" style="display:none;"></canvas>
-    <p id="result"></p>
+    <video id="webcam" autoplay></video><br>
+    <button id="capture-btn" disabled>Capture</button>
+    <canvas id="qr-canvas" hidden></canvas>
+    <p id="message"></p>
 
     <script>
+        // Get DOM elements
         const video = document.getElementById('webcam');
-        const captureButton = document.getElementById('capture-button');
+        const captureBtn = document.getElementById('capture-btn');
         const canvas = document.getElementById('qr-canvas');
         const ctx = canvas.getContext('2d');
-        const result = document.getElementById('result');
+        const message = document.getElementById('message');
 
+        // Calculate distance between two points
         function calculateDistance(point1, point2) {
             const deltaX = point2.x - point1.x;
             const deltaY = point2.y - point1.y;
             return Math.sqrt(deltaX * deltaX + deltaY * deltaY);
         }
 
+        // Capture and download image
         function captureImage() {
             const captureCanvas = document.createElement('canvas');
             captureCanvas.width = video.videoWidth;
             captureCanvas.height = video.videoHeight;
-            captureCanvas.getContext('2d').drawImage(video, 0, 0, captureCanvas.width, captureCanvas.height);
+            captureCanvas.getContext('2d').drawImage(video, 0, 0);
             const imgDataUrl = captureCanvas.toDataURL('image/png');
             const link = document.createElement('a');
             link.href = imgDataUrl;
@@ -40,6 +43,7 @@
             link.click();
         }
 
+        // Scan for QR code and update UI
         function scanQRCode() {
             ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
             const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
@@ -47,28 +51,30 @@
 
             if (qrCode) {
                 const size = calculateDistance(qrCode.location.topLeftCorner, qrCode.location.topRightCorner);
+                message.innerText = `QR Code detected. Size: ${size.toFixed(2)}px`;
 
                 if (size < 100) {
-                    result.innerText += ' - Move Closer';
+                    message.innerText += ' - Move Closer';
                     video.style.border = '10px solid yellow';
-                    captureButton.disabled = true;
+                    captureBtn.disabled = true;
                 } else if (size > 150) {
-                    result.innerText += ' - Move Further Away';
+                    message.innerText += ' - Move Further Away';
                     video.style.border = '10px solid yellow';
-                    captureButton.disabled = true;
+                    captureBtn.disabled = true;
                 } else {
                     video.style.border = '10px solid green';
-                    captureButton.disabled = false;
+                    captureBtn.disabled = false;
                 }
             } else {
-                result.innerText = 'No QR code detected.';
-                video.style.border = '10px solid yellow';
-                captureButton.disabled = true;
+                message.innerText = 'No QR code detected.';
+                video.style.border = '10px solid red';
+                captureBtn.disabled = true;
             }
 
             requestAnimationFrame(scanQRCode);
         }
 
+        // Initialize camera
         async function initCamera() {
             try {
                 const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' }, audio: false });
@@ -79,12 +85,13 @@
                     scanQRCode();
                 });
             } catch (err) {
-                result.innerText = 'Error accessing the camera: ' + err.message;
+                message.innerText = 'Error accessing the camera: ' + err.message;
             }
         }
 
-        captureButton.addEventListener('click', captureImage);
-        initCamera();
+        captureBtn.addEventListener('click', captureImage);
+
+        initCamera(); // Start camera and QR code scanning
     </script>
 </body>
 
