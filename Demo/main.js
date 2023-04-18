@@ -3,6 +3,9 @@ const minQRSize = 100;
 const maxQRSize = 150;
 
 // Get DOM elements
+const introSection = document.getElementById('intro-section');
+const startBtn = document.getElementById('start-btn');
+const captureSection = document.getElementById('capture-section');
 const video = document.getElementById('webcam');
 const captureBtn = document.getElementById('capture-btn');
 const canvas = document.getElementById('qr-canvas');
@@ -80,6 +83,14 @@ async function initCamera() {
     }
 }
 
+// Show capture section, hide intro section and start the camera
+function startCapture() {
+    introSection.hidden = true;
+    captureSection.hidden = false;
+    initCamera();
+}
+
+startBtn.addEventListener('click', startCapture);
 captureBtn.addEventListener('click', captureImage);
 
 initCamera(); // Start camera and QR code scanning
