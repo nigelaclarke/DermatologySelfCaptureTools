@@ -1,6 +1,6 @@
 // Define Settings
-const minQRRatio = 0.15
-const maxQRRatio = 0.20
+const minQRRatio = 0.20
+const maxQRRatio = 0.25
 minQRSize = null;
 maxQRSize = null;
 
@@ -56,7 +56,7 @@ function scanQRCode() {
             video.style.border = '10px solid yellow';
             captureBtn.disabled = true;
         } else {
-            message.innerText = '';
+            message.innerText = 'Perfect';
             video.style.border = '10px solid green';
             captureBtn.disabled = false;
         }
