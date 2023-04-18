@@ -4,7 +4,7 @@ The project aims to address the challenges faced by medical health care provider
 
 # Live Demo
 
-A simple web demo has been developed and can be viewed here: [Live Demo](/Demo/demo.html).
+A simple web demo has been developed and can be viewed here: [Live Demo](./Demo/demo.html).
 
 # Project Background
 
@@ -16,7 +16,7 @@ The project aims to provide low-cost, high-quality medical imaging solutions to 
 
 The images captured by the user, as well as generic patient onboarding information, are transmitted to a cloud-based platform that would be accessible by the provider. It could be used in lieu of, or in conjunction with, the patient intake portion. Over time, it could use machine learning algorithms to analyze the images and provide a diagnosis. This project would enable the providers to prioritize urgent cases and route them to specialists for further evaluation. This project is designed to streamline the process of receiving medical care and reduce the need for in-person visits, which can be difficult or impossible for people living in remote areas.
 
-<img src="/images/MSCT-Tag.png" alt="Imaging tag" width="400">
+<img src="./images/MSCT-Tag.png" alt="Imaging tag" width="400">
 
 # What we're looking for
 
