@@ -19,17 +19,21 @@ function calculateDistance(point1, point2) {
     return Math.sqrt(deltaX * deltaX + deltaY * deltaY);
 }
 
-// Capture and download image
+// Capture and download full-resolution image
 function captureImage() {
-    const captureCanvas = document.createElement('canvas');
-    captureCanvas.width = video.videoWidth;
-    captureCanvas.height = video.videoHeight;
-    captureCanvas.getContext('2d').drawImage(video, 0, 0);
-    const imgDataUrl = captureCanvas.toDataURL('image/png');
-    const link = document.createElement('a');
-    link.href = imgDataUrl;
-    link.download = 'captured-image.png';
-    link.click();
+    const videoTrack = video.srcObject.getVideoTracks()[0];
+    const imageCapture = new ImageCapture(videoTrack);
+
+    imageCapture.takePhoto()
+        .then(blob => {
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `SelfCapture_${new Date().toISOString().slice(0, 19).replace(/[-T:]/g, '')}.png`;
+            link.click();
+        })
+        .catch(error => {
+            message.innerText = 'Error capturing image: ' + error.message;
+        });
 }
 
 // Scan for QR code and update UI
@@ -50,6 +54,7 @@ function scanQRCode() {
             video.style.border = '10px solid yellow';
             captureBtn.disabled = true;
         } else {
+            message.innerText = '';
             video.style.border = '10px solid green';
             captureBtn.disabled = false;
         }
@@ -67,7 +72,9 @@ async function initCamera() {
     try {
         const stream = await navigator.mediaDevices.getUserMedia({
             video: {
-                facingMode: 'environment'
+                facingMode: 'environment',
+                width: { ideal: 1920 },
+                height: { ideal: 1080 },
             }, audio: false
         });
         video.srcObject = stream;
