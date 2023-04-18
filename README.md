@@ -2,6 +2,10 @@
 
 The project aims to address the challenges faced by medical health care providers, such as dermatology or wound care, for patient self-submitted images. The project focuses on the initial patient onboarding and triage of incoming patients. The project aims to create a low-cost solution and implementation that can capture high-quality images of skin related health conditions for the patients, such that the patients can share clinically relevant images with doctors, thereby improving access to healthcare for patients in remote areas. Currently, many patient self-captured images are unsutabe for guiding healthcare decisions because they are out of focus, blurry, too close or too far, or have poor lighting. The project focused on providing a solution that allows patients to take clear and accurate images of their health conditions and share them with doctors and dermatologists remotely, such as many patients face when living in remote areas with limited access to healthcare services. 
 
+# Live Demo
+
+A simple web demo has been developed and can be viewed here: [Live Demo](/Demo/demo.html).
+
 # Project Background
 
 This repository was created for the culmination of the Health{hacks} 2023 hackathon project. It was initially developped by Nigel [@nigelaclarke](https://github.com/nigelaclarke) and Michael [@mcleu](https://github.com/mcleu); where we received second place in the Population and Preventative Health track. More historical information, background, and biodesign inspiration process will be added at a later date.
@@ -17,3 +21,6 @@ The images captured by the user, as well as generic patient onboarding informati
 # What we're looking for
 
 We would like to see this project be developed and help patients. If you are interested in pursuing this as a company, please contact us and we would be happy to help.
+
+# LLM Generated Content
+Portions of this repository were created with the assistance of ChatGPT and comparable tools. Any resemblance to other works is unintentional and may be removed upon request. Please notify us, and we will take necessary action.
