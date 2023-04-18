@@ -76,18 +76,23 @@ async function initCamera() {
         video.addEventListener('loadedmetadata', () => {
             canvas.width = video.videoWidth;
             canvas.height = video.videoHeight;
-            scanQRCode();
         });
+
+        // Enable the start button when the camera has received its first frame
+        video.addEventListener('playing', () => {
+            startBtn.innerText = "Start";
+            startBtn.disabled = false;
+        });
+
     } catch (err) {
         message.innerText = 'Error accessing the camera: ' + err.message;
     }
 }
-
 // Show capture section, hide intro section and start the camera
 function startCapture() {
     introSection.hidden = true;
     captureSection.hidden = false;
-    initCamera();
+    scanQRCode();
 }
 
 startBtn.addEventListener('click', startCapture);
