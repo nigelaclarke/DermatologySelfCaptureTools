@@ -1,3 +1,7 @@
+// Define Settings
+const minQRSize = 100;
+const maxQRSize = 150;
+
 // Get DOM elements
 const video = document.getElementById('webcam');
 const captureBtn = document.getElementById('capture-btn');
@@ -35,11 +39,11 @@ function scanQRCode() {
         const size = calculateDistance(qrCode.location.topLeftCorner, qrCode.location.topRightCorner);
         // message.innerText = `QR Code detected. Size: ${size.toFixed(2)}px`;
 
-        if (size < 100) {
+        if (size < minQRSize) {
             message.innerText += ' - Move Closer';
             video.style.border = '10px solid yellow';
             captureBtn.disabled = true;
-        } else if (size > 150) {
+        } else if (size > maxQRSize) {
             message.innerText += ' - Move Further Away';
             video.style.border = '10px solid yellow';
             captureBtn.disabled = true;
